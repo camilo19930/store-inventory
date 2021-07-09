@@ -1,6 +1,37 @@
-<div class="example-button-row">
-    <button mat-raised-button>Basic</button>
-    <button mat-raised-button color="primary">Primary</button>
-    <button mat-raised-button color="accent">Accent</button>
-</div>
-<h1>hello</h1>
+<main>
+    <form [formGroup]="form" novalidate (keydown.enter)="$event.preventDefault()">
+        <div class="contenedor-login">
+            <table>
+                <tr>
+                    <td>
+                        <h3 class="title">INICIO DE SESIÓN</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../../assets/inventario.png" alt="logo">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content-input">
+                            <input formControlName="username" placeholder="Usuario">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="content-input">
+                            <input formControlName="password" placeholder="Contraseña">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button mat-raised-button color="primary" (keydown.enter)="validarCredenciales()" (click)="validarCredenciales()">Accent</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</main>
