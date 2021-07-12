@@ -1,0 +1,32 @@
+<main>
+    <form [formGroup]="form" novalidate (keydown.enter)="$event.preventDefault()">
+        <h2 mat-dialog-title>Agregar Producto</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre producto</mat-label>
+            <input matInput placeholder="Nombre" formControlName="name">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Decripción</mat-label>
+            <input matInput placeholder="Description" formControlName="description">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Referencia</mat-label>
+            <input matInput placeholder="Reference" formControlName="reference">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cantidad</mat-label>
+            <input matInput placeholder="Cantidad" formControlName="cant">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button class="btn-save" (keydown.enter)="Guardar()" (click)="Guardar()">Guardar</button>
+</main>

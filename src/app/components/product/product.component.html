@@ -1,16 +1,18 @@
 <div class="container-principal">
     <div class="container-secundario">
         <h1>DESTIÓN DE PRODUCTOS</h1>
-        <button mat-raised-button (keydown.enter)="agregar()" (click)="agregar()">Agregar</button>
+        <button mat-raised-button class="btn-save" (keydown.enter)="agregar()" (click)="agregar()">Agregar</button>
+        <button mat-raised-button class="btn-edit" (keydown.enter)="agregar()" (click)="agregar()">Modificar</button>
+        <button mat-raised-button class="btn-delete" (keydown.enter)="agregar()" (click)="agregar()">Eliminar</button>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
             <!-- codigo Column -->
-            <ng-container matColumnDef="codigo">
+            <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef> Código </th>
-                <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
 
             <!-- Name Column -->
@@ -20,17 +22,33 @@
             </ng-container>
 
             <!-- descripcion Column -->
-            <ng-container matColumnDef="descripcion">
+            <ng-container matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef> Descripción </th>
-                <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="reference">
+                <th mat-header-cell *matHeaderCellDef> Referencia </th>
+                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
             </ng-container>
 
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="cant">
+                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                <td mat-cell *matCellDef="let element"> {{element.cant}} </td>
+            </ng-container>
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="fech_update">
+                <th mat-header-cell *matHeaderCellDef> Fecha de actualización </th>
+                <td mat-cell *matCellDef="let element"> {{element.fech_update}} </td>
+            </ng-container>
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef> Chequear </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-checkbox class="check" [(ngModel)]="element.select"></mat-checkbox>
+                </td>
+            </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>

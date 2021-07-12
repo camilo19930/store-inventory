@@ -1,6 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ProductService } from 'src/app/services/product.service';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductInterface } from './product-interface';
 
 export interface PeriodicElement {
   name: string;
@@ -28,17 +32,55 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements AfterViewInit {
-  displayedColumns: string[] = ['codigo', 'name', 'descripcion', 'symbol'];
-  dataSource: any = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'name', 'description', 'reference', 'cant', 'fech_update', 'select'];
+  // dataSource: any = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource: any;
+  checked = false;
+  indeterminate = false;
 
-  constructor() { }
+  constructor(
+    private productService: ProductService,
+    public dialog: MatDialog) {
+    this.obtenerProductos();
+  }
 
+  ngOnit(): void {
+  }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
-  agregar(): void {}
+  async obtenerProductos(): Promise<any> {
+    try {
+      const res = await this.productService.listAllProducts();
+      console.log(res);
+      // return res;
+      this.dataSource = new MatTableDataSource<ProductInterface>(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async agregar(): Promise<any> {
+    const dialogRef = this.dialog.open(AddProductComponent, {
+      height: '400px',
+      width: '600px',
+    });
+
+    // const data = {
+    //   name: 'Blusa',
+    //   description: 'Americana color amarillo',
+    //   reference: 1,
+    //   cant: 5,
+    //   fech_update: '2021/07/19'
+    // };
+    // try {
+    //   const res = await this.productService.createProduct(data);
+    //   console.log(res);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
 }
 
 
