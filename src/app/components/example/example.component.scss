@@ -1,0 +1,137 @@
+.menu {
+    background: white;
+}
+
+table {
+    width: 100%;
+}
+
+.btn {
+    border: transparent;
+}
+
+.contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+.nit {
+    font-size: 13px;
+    color: rgba(173, 173, 173, 0.9);
+}
+
+.estilo {
+    font-size: 17px;
+    color: rgb(107, 103, 103);
+}
+
+hr {
+    border: 1px solid rgb(212, 212, 212);
+}
+
+.texto {
+    font-size: 17px;
+    padding-left: 100px;
+    color: rgb(49, 150, 209)
+}
+
+.borde {
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(226, 209, 209, 0.2);
+    padding: 0;
+    border-radius: 6px;
+    width: 110%;
+}
+
+.img-tam {
+    width: 200px;
+    height: 200px;
+    filter: grayscale(1);
+}
+
+.row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-continuar {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    height: 50px;
+    border-radius: 2px;
+    background: rgba(218, 214, 214, 0.2);
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.card {
+    border: 0;
+    border-radius: 2px;
+}
+
+.titulo {
+    color: rgb(134, 131, 131);
+    font-size: 14px;
+    margin: auto;
+}
+
+.cartera {
+    width: 60%;
+}
+
+.leasling {
+    width: 30%;
+}
+
+div.borde:hover {
+    border: 2px solid rgba(223, 223, 223, 0.993);
+}
+
+div.borde:hover .titulo {
+    color: black;
+}
+
+div.borde:hover .btn-continuar {
+    color: rgb(11, 136, 206);
+    background: rgba(223, 223, 223, 0.993);
+    border: 0;
+    cursor: pointer;
+}
+
+div.borde:hover .img-tam {
+    filter: grayscale(0);
+}
+
+// Desing Responsive
+@media (max-width: 1405px) {
+    .cartera {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1230px) {
+    .tam-col {
+        width: 200px;
+    }
+}
