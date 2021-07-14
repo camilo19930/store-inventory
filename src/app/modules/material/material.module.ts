@@ -5,6 +5,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 const materialComponents = [
@@ -13,7 +16,10 @@ const materialComponents = [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDialogModule,
+  MatIconModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

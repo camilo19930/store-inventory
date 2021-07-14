@@ -1,0 +1,46 @@
+<main>
+    <form [formGroup]="form" novalidate (keydown.enter)="$event.preventDefault()">
+        <div class="row">
+            <div class="item item-10">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre producto</mat-label>
+                    <input matInput placeholder="Nombre" formControlName="name">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="item item-10">
+                <mat-form-field appearance="outline">
+                    <mat-label>Decripción</mat-label>
+                    <input matInput placeholder="Description" formControlName="description">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="item item-10">
+                <mat-form-field floatLabel="always">
+                    <mat-label>Referencia</mat-label>
+                    <input matInput placeholder="Reference" formControlName="reference">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="item item-10 cont">
+                <mat-form-field appearance="outline">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput placeholder="Cantidad" formControlName="cant">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <h2 mat-dialog-title>Agregar Producto</h2>
+
+
+
+
+
+    </form>
+    <button mat-raised-button class="btn-save" (keydown.enter)="Guardar()" (click)="Guardar()">Guardar</button>
+</main>
