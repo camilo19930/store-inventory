@@ -63,23 +63,15 @@ export class ProductComponent implements AfterViewInit {
   }
   async agregar(): Promise<any> {
     const dialogRef = this.dialog.open(AddProductComponent, {
-      height: '400px',
-      width: '600px',
+      panelClass: 'custom-dialog-container',
+      height: '500px',
+      width: '70%',
+      data: {
+        data: {
+          name: 'Camilo'
+        }
+      }
     });
-
-    // const data = {
-    //   name: 'Blusa',
-    //   description: 'Americana color amarillo',
-    //   reference: 1,
-    //   cant: 5,
-    //   fech_update: '2021/07/19'
-    // };
-    // try {
-    //   const res = await this.productService.createProduct(data);
-    //   console.log(res);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   }
 }
 

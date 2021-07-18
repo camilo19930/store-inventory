@@ -1,5 +1,6 @@
 <main>
     <form [formGroup]="form" novalidate (keydown.enter)="$event.preventDefault()">
+        <h1 mat-dialog-title> Agregar producto</h1>
         <div class="row">
             <div class="item item-10">
                 <mat-form-field appearance="outline">
@@ -34,13 +35,6 @@
                 </mat-form-field>
             </div>
         </div>
-
-        <h2 mat-dialog-title>Agregar Producto</h2>
-
-
-
-
-
     </form>
     <button mat-raised-button class="btn-save" (keydown.enter)="Guardar()" (click)="Guardar()">Guardar</button>
 </main>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -10,15 +11,17 @@ import { ProductService } from 'src/app/services/product.service';
 export class AddProductComponent implements OnInit {
 
   form: any = FormGroup;
-
+  // data: any;
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
+    @Inject(MAT_DIALOG_DATA) public data
   ) {
     this.form = this.construirFormulario();
   }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
   private construirFormulario(): any {
