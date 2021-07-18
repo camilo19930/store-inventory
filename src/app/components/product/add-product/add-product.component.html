@@ -2,7 +2,7 @@
     <form [formGroup]="form" novalidate (keydown.enter)="$event.preventDefault()">
         <h1 mat-dialog-title> Agregar producto</h1>
         <div class="row">
-            <div class="item item-10">
+            <div class="item1">
                 <mat-form-field appearance="outline">
                     <mat-label>Nombre producto</mat-label>
                     <input matInput placeholder="Nombre" formControlName="name">
@@ -10,7 +10,7 @@
                     <mat-hint>Hint</mat-hint>
                 </mat-form-field>
             </div>
-            <div class="item item-10">
+            <div class="item2">
                 <mat-form-field appearance="outline">
                     <mat-label>Decripción</mat-label>
                     <input matInput placeholder="Description" formControlName="description">
@@ -18,7 +18,7 @@
                     <mat-hint>Hint</mat-hint>
                 </mat-form-field>
             </div>
-            <div class="item item-10">
+            <div class="item3">
                 <mat-form-field floatLabel="always">
                     <mat-label>Referencia</mat-label>
                     <input matInput placeholder="Reference" formControlName="reference">
@@ -26,7 +26,7 @@
                     <mat-hint>Hint</mat-hint>
                 </mat-form-field>
             </div>
-            <div class="item item-10 cont">
+            <div>
                 <mat-form-field appearance="outline">
                     <mat-label>Cantidad</mat-label>
                     <input matInput placeholder="Cantidad" formControlName="cant">

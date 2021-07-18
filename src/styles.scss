@@ -55,6 +55,15 @@
             box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
         }
         
+        .row {
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        
+        .item1 {
+            grid-row: 1 / span 2;
+        }
+        
         .mat-checkbox-ripple .mat-ripple-element,
         .mat-checkbox-checked.mat-accent .mat-checkbox-background {
             background-color: rgba(32, 79, 122, 0.8);
@@ -87,10 +96,4 @@
             margin-top: -30px 0 10px 0 !important;
             align-items: center;
             display: inline;
-        }
-        
-        .row {
-            margin: 1%;
-            // display: flex-direction;
-            align-items: stretch;
         }
