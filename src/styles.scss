@@ -1,348 +1,204 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat-core();
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$store-inventory-primary: mat-palette($mat-indigo);
-$store-inventory-accent: mat-palette($mat-pink, A200, A100, A400);
-// The warn palette is optional (defaults to red).
-$store-inventory-warn: mat-palette($mat-red);
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$store-inventory-theme: mat-light-theme(( color: ( primary: $store-inventory-primary, accent: $store-inventory-accent, warn: $store-inventory-warn, )));
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($store-inventory-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-h1 {
-    font-size: large;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: rgb(67, 98, 167);
-}
-
-.container-principal {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container-secundario {
-    width: 96%;
-    height: 97%;
-    background: rgba(255, 255, 255, 0.144);
-    -webkit-box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
-    -moz-box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
-    box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
-}
-
-.mat-checkbox-ripple .mat-ripple-element,
-.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: rgba(32, 79, 122, 0.8);
-}
-
-.btn-save {
-    background-color: rgba(70, 168, 24, 0.8);
-    color: white;
-}
-
-.btn-delete {
-    background-color: rgba(209, 23, 48, 0.8);
-    color: white;
-}
-
-.btn-edit {
-    background-color: rgb(47, 129, 223);
-    color: white
-}
-
-.item {
-    padding-right: var(--margin-control);
-    padding-left: var(--margin-control);
-    background-color: transparent;
-}
-
-.row {
-    display: flex;
-    justify-content: flex-start;
-    padding-top: var(--margin);
-    padding-bottom: 2px;
-    padding-right: 0px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    width: 100%;
-    min-height: 28px;
-}
-
-.row-external {
-    display: flex;
-    justify-content: flex-start;
-    padding-top: var(--margin);
-    padding-bottom: 2px;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: calc(100% + (var(--margin) * 2)) - 10;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.row-middle {
-    background-color: #f7f7f7;
-}
-
-.item>.row:first-child {
-    padding-top: 0;
-}
-
-.row>.item>.row>.item {
-    background-color: transparent;
-}
-
-.item-1 {
-    width: calc(1% - (var(--margin-control) * 2));
-}
-
-.item-2 {
-    width: calc(2% - (var(--margin-control) * 2));
-}
-
-.item-3 {
-    width: calc(3% - (var(--margin-control) * 2));
-}
-
-.item-3-4 {
-    width: calc(3.4% - (var(--margin-control) * 2));
-}
-
-.item-4 {
-    width: calc(4% - (var(--margin-control) * 2));
-}
-
-.item-5 {
-    width: calc(5% - (var(--margin-control) * 2));
-}
-
-.item-6 {
-    width: calc(6% - (var(--margin-control) * 2));
-}
-
-.item-7 {
-    width: calc(7% - (var(--margin-control) * 2));
-}
-
-.item-7-5 {
-    width: calc(7.5% - (var(--margin-control) * 2));
-}
-
-.item-8 {
-    width: calc(8% - (var(--margin-control) * 2));
-}
-
-.item-9 {
-    width: calc(9% - (var(--margin-control) * 2));
-}
-
-.item-10 {
-    width: calc(10% - (var(--margin-control) * 2));
-}
-
-.item-11 {
-    width: calc(11% - (var(--margin-control) * 2));
-}
-
-.item-12 {
-    width: calc(12% - (var(--margin-control) * 2));
-}
-
-.item-13 {
-    width: calc(13% - (var(--margin-control) * 2));
-}
-
-.item-14 {
-    width: calc(14% - (var(--margin-control) * 2));
-}
-
-.item-15 {
-    width: calc(15% - (var(--margin-control) * 2));
-}
-
-.item-16 {
-    width: calc(16% - (var(--margin-control) * 2));
-}
-
-.item-17 {
-    width: calc(17% - (var(--margin-control) * 2));
-}
-
-.item-18 {
-    width: calc(18% - (var(--margin-control) * 2));
-}
-
-.item-19 {
-    width: calc(19% - (var(--margin-control) * 2));
-}
-
-.item-20 {
-    width: calc(20% - (var(--margin-control) * 2));
-}
-
-.item-21 {
-    width: calc(21% - (var(--margin-control) * 2));
-}
-
-.item-22 {
-    width: calc(22% - (var(--margin-control) * 2));
-}
-
-.item-23 {
-    width: calc(23% - (var(--margin-control) * 2));
-}
-
-.item-24 {
-    width: calc(23% - (var(--margin-control) * 2));
-}
-
-.item-25 {
-    width: calc(25% - (var(--margin-control) * 2));
-}
-
-.item-26 {
-    width: calc(26% - (var(--margin-control) * 2));
-}
-
-.item-27 {
-    width: calc(27% - (var(--margin-control) * 2));
-}
-
-.item-28 {
-    width: calc(28% - (var(--margin-control) * 2));
-}
-
-.item-30 {
-    width: calc(30% - (var(--margin-control) * 2));
-}
-
-.item-32 {
-    width: calc(32% - (var(--margin-control) * 2));
-}
-
-.item-33 {
-    width: calc(33% - (var(--margin-control) * 2));
-}
-
-.item-34 {
-    width: calc(34% - (var(--margin-control) * 2));
-}
-
-.item-35 {
-    width: calc(35% - (var(--margin-control) * 2));
-}
-
-.item-36 {
-    width: calc(35% - (var(--margin-control) * 2));
-}
-
-.item-37 {
-    width: calc(37% - (var(--margin-control) * 2));
-}
-
-.item-38 {
-    width: calc(37% - (var(--margin-control) * 2));
-}
-
-.item-40 {
-    width: calc(40% - (var(--margin-control) * 2));
-}
-
-.item-42 {
-    width: calc(42% - (var(--margin-control) * 2));
-}
-
-.item-43 {
-    width: calc(43% - (var(--margin-control) * 2));
-}
-
-.item-45 {
-    width: calc(45% - (var(--margin-control) * 2));
-}
-
-.item-50 {
-    width: calc(50% - (var(--margin-control) * 2));
-}
-
-.item-53 {
-    width: calc(53% - (var(--margin-control) * 2));
-}
-
-.item-54 {
-    width: calc(54% - (var(--margin-control) * 2));
-}
-
-.item-55 {
-    width: calc(55% - (var(--margin-control) * 2));
-}
-
-.item-60 {
-    width: calc(60% - (var(--margin-control) * 2));
-}
-
-.item-65 {
-    width: calc(65% - (var(--margin-control) * 2));
-}
-
-.item-70 {
-    width: calc(70% - (var(--margin-control) * 2));
-}
-
-.item-73 {
-    width: calc(73% - (var(--margin-control) * 2));
-}
-
-.item-75 {
-    width: calc(75% - (var(--margin-control) * 2));
-}
-
-.item-80 {
-    width: calc(80% - (var(--margin-control) * 2));
-}
-
-.item-85 {
-    width: calc(85% - (var(--margin-control) * 2));
-}
-
-.item-90 {
-    width: calc(90% - (var(--margin-control) * 2));
-}
-
-.item-95 {
-    width: calc(95% - (var(--margin-control) * 2));
-}
-
-.item-100 {
-    width: calc(100% - (var(--margin-control) * 2));
-}
-
-.item-full {
-    width: 100%;
-}
+        // Custom Theming for Angular Material
+        // For more information: https://material.angular.io/guide/theming
+        @import '~@angular/material/theming';
+        // Plus imports for other components in your app.
+        // Include the common styles for Angular Material. We include this here so that you only
+        // have to load a single css file for Angular Material in your app.
+        // Be sure that you only ever include this mixin once!
+        @include mat-core();
+        // Define the palettes for your theme using the Material Design palettes available in palette.scss
+        // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+        // hue. Available color palettes: https://material.io/design/color/
+        $store-inventory-primary: mat-palette($mat-indigo);
+        $store-inventory-accent: mat-palette($mat-pink, A200, A100, A400);
+        // The warn palette is optional (defaults to red).
+        $store-inventory-warn: mat-palette($mat-red);
+        // Create the theme object. A theme consists of configurations for individual
+        // theming systems such as "color" or "typography".
+        $store-inventory-theme: mat-light-theme(( color: ( primary: $store-inventory-primary, accent: $store-inventory-accent, warn: $store-inventory-warn, )));
+        // Include theme styles for core and each component used in your app.
+        // Alternatively, you can import and @include the theme mixins for each component
+        // that you are using.
+        @include angular-material-theme($store-inventory-theme);
+        /* You can add global styles to this file, and also import other style files */
+        
+         :root {
+            --margin-control: 20px;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
+        }
+        
+        h1 {
+            font-size: large;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: rgb(67, 98, 167);
+        }
+        
+        .container-principal {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container-secundario {
+            width: 96%;
+            height: 97%;
+            background: rgba(255, 255, 255, 0.144);
+            -webkit-box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
+            -moz-box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
+            box-shadow: 0px 0px 10px 2px rgba(194, 194, 194, 1);
+        }
+        
+        // Inicio configuracion de filas
+        .grid-container {
+            height: 99%;
+            width: 100%;
+        }
+        
+        .row {
+            justify-content: flex-start;
+            height: 60px;
+            width: auto;
+            margin: 2% 1% 1% 1%;
+        }
+        
+        .item {
+            margin: 0 10px 0 0;
+            padding: 0;
+            width: auto;
+            height: 60px;
+        }
+        
+        .item-5 {
+            width: calc(5% - (var(--margin-control)* 2));
+        }
+        
+        .item-10 {
+            width: calc(10% - (var(--margin-control)* 2));
+        }
+        
+        .item-15 {
+            width: calc(15% - (var(--margin-control)* 2));
+        }
+        
+        .item-20 {
+            width: calc(20% - (var(--margin-control)* 2));
+        }
+        
+        .item-25 {
+            width: calc(25% - (var(--margin-control)* 2));
+        }
+        
+        .item-30 {
+            width: calc(30% - (var(--margin-control)* 2));
+        }
+        
+        .item-35 {
+            width: calc(35% - (var(--margin-control)* 2));
+        }
+        
+        .item-40 {
+            width: calc(40% - (var(--margin-control)* 2));
+        }
+        
+        .item-45 {
+            width: calc(45% - (var(--margin-control)* 2));
+        }
+        
+        .item-50 {
+            width: calc(50% - (var(--margin-control)* 2));
+        }
+        
+        .item-55 {
+            width: calc(55% - (var(--margin-control)* 2));
+        }
+        
+        .item-60 {
+            width: calc(60% - (var(--margin-control)* 2));
+        }
+        
+        .item-65 {
+            width: calc(65% - (var(--margin-control)* 2));
+        }
+        
+        .item-70 {
+            width: calc(70% - (var(--margin-control)* 2));
+        }
+        
+        .item-75 {
+            width: calc(75% - (var(--margin-control)* 2));
+        }
+        
+        .item-80 {
+            width: calc(80% - (var(--margin-control)* 2));
+        }
+        
+        .item-85 {
+            width: calc(85% - (var(--margin-control)* 2));
+        }
+        
+        .item-90 {
+            width: calc(90% - (var(--margin-control)* 2));
+        }
+        
+        .item-95 {
+            width: calc(95% - (var(--margin-control)* 2));
+        }
+        
+        .item-100 {
+            width: calc(100% - (var(--margin-control)* 2));
+        }
+        
+        // Fin configuracion de filas
+        .mat-form-field {
+            // border: 2px solid darkred;
+            max-width: 100%;
+            height: 50;
+            padding: 0;
+        }
+        
+        // Inicio configuaración botones y check
+        .mat-checkbox-ripple .mat-ripple-element,
+        .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+            background-color: rgba(32, 79, 122, 0.8);
+        }
+        
+        .btn-save {
+            background-color: rgba(70, 168, 24, 0.8);
+            color: white;
+        }
+        
+        .btn-delete {
+            background-color: rgba(209, 23, 48, 0.8);
+            color: white;
+        }
+        
+        .btn-edit {
+            background-color: rgb(47, 129, 223);
+            color: white
+        }
+        
+        // Fin configuaración botones y check
+        .custom-dialog-container .mat-dialog-container {
+            padding: 0;
+        }
+        
+        .mat-dialog-title {
+            background-color: rgba(32, 79, 122, 0.8);
+            width: 100%;
+            height: 50px;
+            color: white;
+            margin-top: -30px 0 10px 0 !important;
+            align-items: center;
+            display: inline;
+        }
