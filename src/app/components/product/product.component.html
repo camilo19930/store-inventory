@@ -1,9 +1,15 @@
 <div class="container-principal">
     <div class="container-secundario">
         <h1>DESTIÓN DE PRODUCTOS</h1>
-        <button mat-raised-button class="btn-save" (keydown.enter)="agregar()" (click)="agregar()">Agregar</button>
-        <button mat-raised-button class="btn-edit" (keydown.enter)="agregar()" (click)="agregar()">Modificar</button>
-        <button mat-raised-button class="btn-delete" (keydown.enter)="agregar()" (click)="agregar()">Eliminar</button>
+        <div class="botones">
+            <button mat-raised-button class="btn btn-save" (keydown.enter)="agregar()" (click)="agregar()">Agregar</button>
+
+            <button mat-raised-button class="btn btn-edit" (keydown.enter)="editar()" (click)="editar()">Modificar</button>
+
+            <button mat-raised-button class="btn btn-delete" (keydown.enter)="agregar()" (click)="agregar()">Eliminar</button>
+        </div>
+
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
@@ -46,7 +52,7 @@
             <ng-container matColumnDef="select">
                 <th mat-header-cell *matHeaderCellDef> Chequear </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-checkbox class="check" [(ngModel)]="element.select"></mat-checkbox>
+                    <mat-checkbox class="check" (click)="seleccionarCampo($event, element)"></mat-checkbox>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -28,13 +28,13 @@
                     <mat-form-field floatLabel="always">
                         <mat-label>Cantidad</mat-label>
                         <input matInput placeholder="Cantidad" formControlName="cant">
-                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-icon matSuffix>error_outline</mat-icon>
                     </mat-form-field>
                 </div>
             </div>
+            <div style="width: 100%; text-align: right; margin-left: -2%;">
+                <button mat-raised-button class="btn-save" (keydown.enter)="guardar()" (click)="guardar()">Guardar</button>
+            </div>
         </div>
     </form>
-    <div class="item item-100" style="text-align: right;">
-        <button mat-raised-button class="btn-save" (keydown.enter)="tinyAlert()" (click)="tinyAlert()">Guardar</button>
-    </div>
 </main>
