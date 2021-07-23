@@ -23,7 +23,8 @@
         /* You can add global styles to this file, and also import other style files */
         
          :root {
-            --margin-control: 20px;
+            --margin-control: 0 10px 0 0;
+            ;
         }
         
         html,
@@ -74,90 +75,90 @@
         }
         
         .item {
-            margin: 0 10px 0 0;
+            margin: 0 1% 0 0;
             padding: 0;
             width: auto;
             height: 60px;
         }
         
         .item-5 {
-            width: calc(5% - (var(--margin-control)* 2));
+            width: 4%;
         }
         
         .item-10 {
-            width: calc(10% - (var(--margin-control)* 2));
+            width: 9%;
         }
         
         .item-15 {
-            width: calc(15% - (var(--margin-control)* 2));
+            width: 14%;
         }
         
         .item-20 {
-            width: calc(20% - (var(--margin-control)* 2));
+            width: 19%;
         }
         
         .item-25 {
-            width: calc(25% - (var(--margin-control)* 2));
+            width: 24%;
         }
         
         .item-30 {
-            width: calc(30% - (var(--margin-control)* 2));
+            width: 29%;
         }
         
         .item-35 {
-            width: calc(35% - (var(--margin-control)* 2));
+            width: 34%;
         }
         
         .item-40 {
-            width: calc(40% - (var(--margin-control)* 2));
+            width: 39%;
         }
         
         .item-45 {
-            width: calc(45% - (var(--margin-control)* 2));
+            width: 44%;
         }
         
         .item-50 {
-            width: calc(50% - (var(--margin-control)* 2));
+            width: 49%;
         }
         
         .item-55 {
-            width: calc(55% - (var(--margin-control)* 2));
+            width: 54%;
         }
         
         .item-60 {
-            width: calc(60% - (var(--margin-control)* 2));
+            width: 59%;
         }
         
         .item-65 {
-            width: calc(65% - (var(--margin-control)* 2));
+            width: 65%;
         }
         
         .item-70 {
-            width: calc(70% - (var(--margin-control)* 2));
+            width: 69%;
         }
         
         .item-75 {
-            width: calc(75% - (var(--margin-control)* 2));
+            width: 74%;
         }
         
         .item-80 {
-            width: calc(80% - (var(--margin-control)* 2));
+            width: 79%;
         }
         
         .item-85 {
-            width: calc(85% - (var(--margin-control)* 2));
+            width: 84%;
         }
         
         .item-90 {
-            width: calc(90% - (var(--margin-control)* 2));
+            width: 89%;
         }
         
         .item-95 {
-            width: calc(95% - (var(--margin-control)* 2));
+            width: 94%
         }
         
         .item-100 {
-            width: calc(100% - (var(--margin-control)* 2));
+            width: 99%;
         }
         
         // Fin configuracion de filas
@@ -191,6 +192,12 @@
         .btn-edit {
             background-color: rgb(47, 129, 223);
             color: white
+        }
+        
+        .btn-habilitado {}
+        
+        .btn-deshabilitado {
+            background: rgb(233, 232, 232, 0.8);
         }
         
         // Fin configuaración botones y check

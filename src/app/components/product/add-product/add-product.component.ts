@@ -21,9 +21,12 @@ export class AddProductComponent implements OnInit {
     private dialogRef: MatDialogRef<AddProductComponent>
   ) {
     this.form = this.construirFormulario();
+    this.fech_update.setValue('2021/07/19');
   }
   ngOnInit(): void {
-    console.log(this.data);
+    console.log(this.form);
+    console.log(this.form.controls);
+    console.log(this.form.controls[0]);
     if (this.data.data.accion === 'editar') {
       this.llenarCampos(this.data.data.registros[0]);
     }
@@ -31,11 +34,11 @@ export class AddProductComponent implements OnInit {
 
   private construirFormulario(): any {
     return this.formBuilder.group({
-      name: new FormControl(null, [Validators.required, Validators.maxLength(25)]),
-      description: new FormControl(null, [Validators.required, Validators.maxLength(25)]),
-      reference: new FormControl(null, [Validators.required, Validators.maxLength(25)]),
-      cant: new FormControl(null, [Validators.required, Validators.maxLength(25)]),
-      fech_update: new FormControl(null, [Validators.required, Validators.maxLength(25)]),
+      name: new FormControl(null, [Validators.required, Validators.maxLength(30)]),
+      description: new FormControl(null, [Validators.required, Validators.maxLength(300)]),
+      reference: new FormControl(null, [Validators.required, Validators.maxLength(5)]),
+      cant: new FormControl(null, [Validators.required, Validators.maxLength(15)]),
+      fech_update: new FormControl(null, Validators.required),
     });
   }
 
@@ -46,7 +49,15 @@ export class AddProductComponent implements OnInit {
   get fech_update(): any { return this.form.get('fech_update'); }
 
   async guardar(): Promise<any> {
-    if (!this.form.invalid) {
+    let bandera = true;
+    for (const el in this.form.controls) {
+      if (this.form.controls[el].errors) {
+        console.log(el);
+        bandera = false;
+      }
+    }
+    console.log(this.form);
+    if (this.form.status === 'VALID') {
       const data = {
         name: this.name.value,
         description: this.description.value,
@@ -56,14 +67,13 @@ export class AddProductComponent implements OnInit {
       };
       try {
         const res = await this.productService.createProduct(data);
-        console.log(res);
         await this.tinyAlert();
-        this.dialogRef.close(true);
+        this.dialogRef.close('true');
       } catch (error) {
         this.tinyAlertError();
-        console.log(error);
       }
     } else {
+      console.log(this.form);
       Swal.fire({
         position: 'top-end',
         icon: 'warning',
@@ -76,7 +86,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  llenarCampos(datos): void{
+  llenarCampos(datos): void {
     this.name.setValue(datos.name);
     this.description.setValue(datos.description);
     this.reference.setValue(datos.reference);

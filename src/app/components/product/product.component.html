@@ -4,7 +4,7 @@
         <div class="botones">
             <button mat-raised-button class="btn btn-save" (keydown.enter)="agregar()" (click)="agregar()">Agregar</button>
 
-            <button mat-raised-button class="btn btn-edit" (keydown.enter)="editar()" (click)="editar()">Modificar</button>
+            <button mat-raised-button class="btn btn-edit" (keydown.enter)="editar()" (click)="editar()" [disabled]="habilitaBtnModificar" [ngClass]="{'btn-hablitado': !habilitaBtnModificar, 'btn-deshabilitado': habilitaBtnModificar}">Modificar</button>
 
             <button mat-raised-button class="btn btn-delete" (keydown.enter)="agregar()" (click)="agregar()">Eliminar</button>
         </div>

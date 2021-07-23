@@ -1,0 +1,37 @@
+.button-container {
+    margin-bottom: 10px !important;
+}
+
+@media (max-width: 957px) {
+    .row {
+        height: auto !important;
+        width: auto;
+    }
+    .item {
+        height: 50px;
+        width: auto;
+    }
+}
+
+@media (max-width: 882px) {
+    .item {
+        width: 48% !important;
+    }
+}
+
+@media (max-width: 624px) {
+    .item {
+        width: auto !important;
+    }
+}
+
+@media (max-width: 515px) {
+    .row {
+        display: inline-block;
+        align-content: center;
+    }
+    .item {
+        width: auto!important;
+        margin: 0 4% 0 4%;
+    }
+}

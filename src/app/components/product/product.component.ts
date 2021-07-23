@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,12 +11,14 @@ import { ProductInterface } from './product-interface';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements AfterViewInit {
+export class ProductComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'reference', 'cant', 'fech_update', 'select'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: any;
   form: any = FormGroup;
   dataEnviar = [];
+  dialogRef: any;
+  habilitaBtnModificar = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +26,8 @@ export class ProductComponent implements AfterViewInit {
     public dialog: MatDialog) {
     this.obtenerProductos();
   }
-  ngAfterViewInit(): void {}
+  ngOnInit(): void {}
+  ngAfterViewInit(): void { }
 
   async obtenerProductos(): Promise<any> {
     try {
@@ -43,13 +46,14 @@ export class ProductComponent implements AfterViewInit {
   seleccionarCampo(event: any, elemento: any): void {
     console.log(elemento);
     this.dataEnviar.push(elemento);
+    this.habilitaBtnModificar = false;
   }
 
   llamarPopup(accionEnviar: string, data?: {}): void {
-    const dialogRef = this.dialog.open(AddProductComponent, {
+    this.dialogRef = this.dialog.open(AddProductComponent, {
       panelClass: 'custom-dialog-container',
-      height: '170px',
-      width: '50%',
+      height: 'auto',
+      width: 'auto',
       data: {
         data: {
           accion: accionEnviar,
@@ -57,7 +61,10 @@ export class ProductComponent implements AfterViewInit {
         }
       }
     });
-
+    console.log(this.dialogRef);
+    if (this.dialogRef) {
+      this.obtenerProductos();
+    }
   }
 }
 
