@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
   validarCredenciales(): void {
     const userCredencial = 'Marte';
     const passwordCredencial = '1234';
-    console.log(this.username.value, this.password.value);
-    console.log((userCredencial === this.username.value));
     if ((userCredencial === this.username.value) && (passwordCredencial === this.password.value)) {
     } else {
     }

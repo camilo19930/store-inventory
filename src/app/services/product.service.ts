@@ -6,12 +6,15 @@ import { ProductInterface } from '../components/product/product-interface';
   providedIn: 'root'
 })
 export class ProductService {
-  private url = 'http://localhost:5000/';
+  private url = 'http://localhost:5000';
 
   constructor(private httpClient: HttpClient) {}
 
   async createProduct(data: any): Promise<any> {
     return await this.httpClient.post(`${this.url}/add-product`, data).toPromise();
+  }
+  async editProduct(data: any, id): Promise<any> {
+    return await this.httpClient.put(`${this.url}/product/${id}`, data).toPromise();
   }
   async listProduct(id: any): Promise<any> {
     return await this.httpClient.get(`${this.url}/list-product/${id}`).toPromise();

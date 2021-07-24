@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/services/product.service';
+import Swal from 'sweetalert2';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductInterface } from './product-interface';
 @Component({
@@ -27,6 +28,9 @@ export class ProductComponent implements OnInit, AfterViewInit {
     this.obtenerProductos();
   }
   ngOnInit(): void {}
+
+
+
   ngAfterViewInit(): void { }
 
   async obtenerProductos(): Promise<any> {
@@ -44,11 +48,24 @@ export class ProductComponent implements OnInit, AfterViewInit {
     this.llamarPopup('editar', this.dataEnviar);
   }
   seleccionarCampo(event: any, elemento: any): void {
-    console.log(elemento);
-    this.dataEnviar.push(elemento);
-    this.habilitaBtnModificar = false;
+    if (this.dataEnviar.length === 0) {
+      this.dataEnviar.push(elemento);
+      this.habilitaBtnModificar = false;
+    } else {
+      const BUSQUEDA = this.dataEnviar.find(option => option.id === elemento.id);
+      if (BUSQUEDA !== undefined) {
+        this.dataEnviar.splice(BUSQUEDA, 1);
+        this.habilitaBtnModificar = true;
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: 'No puede seleccionar más de un resgistro',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+    }
   }
-
   llamarPopup(accionEnviar: string, data?: {}): void {
     this.dialogRef = this.dialog.open(AddProductComponent, {
       panelClass: 'custom-dialog-container',
@@ -61,7 +78,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
         }
       }
     });
-    console.log(this.dialogRef);
     if (this.dialogRef) {
       this.obtenerProductos();
     }

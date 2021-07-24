@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class AddProductComponent implements OnInit {
 
   form: any = FormGroup;
-  // data: any;
+  id = 0;
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
@@ -24,9 +24,6 @@ export class AddProductComponent implements OnInit {
     this.fech_update.setValue('2021/07/19');
   }
   ngOnInit(): void {
-    console.log(this.form);
-    console.log(this.form.controls);
-    console.log(this.form.controls[0]);
     if (this.data.data.accion === 'editar') {
       this.llenarCampos(this.data.data.registros[0]);
     }
@@ -52,11 +49,9 @@ export class AddProductComponent implements OnInit {
     let bandera = true;
     for (const el in this.form.controls) {
       if (this.form.controls[el].errors) {
-        console.log(el);
         bandera = false;
       }
     }
-    console.log(this.form);
     if (this.form.status === 'VALID') {
       const data = {
         name: this.name.value,
@@ -66,49 +61,70 @@ export class AddProductComponent implements OnInit {
         fech_update: '2021/07/19'
       };
       try {
-        const res = await this.productService.createProduct(data);
-        await this.tinyAlert();
+        if (this.data.data.accion === 'editar') {
+          this.editar(data);
+        } else {
+          this.guardarRegistro(data);
+        }
         this.dialogRef.close('true');
       } catch (error) {
-        this.tinyAlertError();
+        this.alertError();
       }
     } else {
-      console.log(this.form);
-      Swal.fire({
-        position: 'top-end',
-        icon: 'warning',
-        title: 'Debe llenar los campos obligatorios',
-        showConfirmButton: false,
-        timer: 3000,
-        heightAuto: false,
-        width: 300
-      });
+      this.alertWarning();
     }
   }
-
+  async editar(data): Promise<any> {
+    try {
+      const res = await this.productService.editProduct(data, this.id);
+      await this.alertExito('El registro ha sido actualizado');
+    } catch (error) {
+      this.alertError();
+    }
+  }
+  async guardarRegistro(data): Promise<any> {
+    try {
+      const res = await this.productService.createProduct(data);
+      await this.alertExito('El registro ha sido creado');
+    } catch (error) {
+      this.alertError();
+    }
+  }
   llenarCampos(datos): void {
     this.name.setValue(datos.name);
     this.description.setValue(datos.description);
     this.reference.setValue(datos.reference);
     this.cant.setValue(datos.cant);
     this.fech_update.setValue(datos.fech_update);
+    this.id = +datos.id;
   }
 
 
-  tinyAlert(): void {
+  alertExito(message: string): void {
     Swal.fire({
       title: 'Exitoso!',
-      text: 'El registro ha sido creado',
+      text: message,
       icon: 'success',
       confirmButtonText: 'Aceptar'
     });
   }
-  tinyAlertError(): void {
+  alertError(): void {
     Swal.fire({
-      title: 'Exitoso!',
-      text: 'El registro ha sido creado',
+      title: 'Falló!',
+      text: 'El registro no se ha podido crear',
       icon: 'error',
       confirmButtonText: 'Aceptar'
+    });
+  }
+  alertWarning(): void {
+    Swal.fire({
+      position: 'top-end',
+      icon: 'warning',
+      title: 'Debe llenar los campos obligatorios',
+      showConfirmButton: false,
+      timer: 3000,
+      heightAuto: false,
+      width: 300
     });
   }
 }
