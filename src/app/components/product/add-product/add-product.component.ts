@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
+import { ProductComponent } from '../product.component';
 
 
 @Component({
@@ -66,7 +67,6 @@ export class AddProductComponent implements OnInit {
         } else {
           this.guardarRegistro(data);
         }
-        this.dialogRef.close('true');
       } catch (error) {
         this.alertError();
       }
@@ -78,6 +78,7 @@ export class AddProductComponent implements OnInit {
     try {
       const res = await this.productService.editProduct(data, this.id);
       await this.alertExito('El registro ha sido actualizado');
+      this.dialogRef.close({respuesta: true});
     } catch (error) {
       this.alertError();
     }
@@ -86,6 +87,7 @@ export class AddProductComponent implements OnInit {
     try {
       const res = await this.productService.createProduct(data);
       await this.alertExito('El registro ha sido creado');
+      this.dialogRef.close({respuesta: true});
     } catch (error) {
       this.alertError();
     }

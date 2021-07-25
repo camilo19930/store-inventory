@@ -6,57 +6,58 @@
 
             <button mat-raised-button class="btn btn-edit" (keydown.enter)="editar()" (click)="editar()" [disabled]="habilitaBtnModificar" [ngClass]="{'btn-hablitado': !habilitaBtnModificar, 'btn-deshabilitado': habilitaBtnModificar}">Modificar</button>
 
-            <button mat-raised-button class="btn btn-delete" (keydown.enter)="agregar()" (click)="agregar()">Eliminar</button>
+            <button mat-raised-button class="btn btn-delete" (keydown.enter)="eliminar()" (click)="eliminar()" [disabled]="habilitaBtnModificar" [ngClass]="{'btn-hablitado': !habilitaBtnModificar, 'btn-deshabilitado': habilitaBtnModificar}">Eliminar</button>
         </div>
 
+        <div class="container-table">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
+                <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-            <!-- codigo Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> Código </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container>
+                <!-- codigo Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Código </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
 
-            <!-- descripcion Column -->
-            <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef> Descripción </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-            </ng-container>
+                <!-- descripcion Column -->
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="reference">
-                <th mat-header-cell *matHeaderCellDef> Referencia </th>
-                <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
-            </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="reference">
+                    <th mat-header-cell *matHeaderCellDef> Referencia </th>
+                    <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+                </ng-container>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="cant">
-                <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-                <td mat-cell *matCellDef="let element"> {{element.cant}} </td>
-            </ng-container>
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="fech_update">
-                <th mat-header-cell *matHeaderCellDef> Fecha de actualización </th>
-                <td mat-cell *matCellDef="let element"> {{element.fech_update}} </td>
-            </ng-container>
-            <ng-container matColumnDef="select">
-                <th mat-header-cell *matHeaderCellDef> Chequear </th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-checkbox class="check" type="checkbox" (change)="seleccionarCampo($event, element)"></mat-checkbox>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="cant">
+                    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+                    <td mat-cell *matCellDef="let element"> {{element.cant}} </td>
+                </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="fech_update">
+                    <th mat-header-cell *matHeaderCellDef> Fecha de actualización </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fech_update}} </td>
+                </ng-container>
+                <ng-container matColumnDef="select">
+                    <th mat-header-cell *matHeaderCellDef> Chequear </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-checkbox class="check" type="checkbox" (change)="seleccionarCampo($event, element)"></mat-checkbox>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
     </div>
 </div>

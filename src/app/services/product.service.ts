@@ -19,6 +19,9 @@ export class ProductService {
   async listProduct(id: any): Promise<any> {
     return await this.httpClient.get(`${this.url}/list-product/${id}`).toPromise();
   }
+  async deleteProduct(id: any): Promise<any> {
+    return await this.httpClient.delete(`${this.url}/delete-product/${id}`).toPromise();
+  }
   async listAllProducts(): Promise<any> {
     const res: any = await this.httpClient.get(`${this.url}/list-product`).toPromise();
     if (res.length > 0 ) {

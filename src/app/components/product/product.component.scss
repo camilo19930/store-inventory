@@ -1,12 +1,13 @@
-.contenedor {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
+.container-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
 }
 
 table {
     margin-top: 2%;
-    width: 80%;
+    width: 90%;
 }
 
 .botones {

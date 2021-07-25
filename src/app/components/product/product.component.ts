@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   dataSource: any;
   form: any = FormGroup;
-  dataEnviar = [];
+  dataEnviar: any = [];
   dialogRef: any;
   habilitaBtnModificar = true;
 
@@ -27,18 +27,27 @@ export class ProductComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog) {
     this.obtenerProductos();
   }
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
 
   ngAfterViewInit(): void { }
+
+  async actualizar(): Promise<any> {
+    try {
+      const res = await this.productService.listAllProducts();
+      this.dataSource = res;
+    } catch (error) {
+      this.alertError('Ha ocurrido un error a la hora de obtener los productos');
+    }
+  }
 
   async obtenerProductos(): Promise<any> {
     try {
       const res = await this.productService.listAllProducts();
       this.dataSource = new MatTableDataSource<ProductInterface>(res);
     } catch (error) {
-      console.log(error);
+      this.alertError('Ha ocurrido un error a la hora de obtener los productos');
     }
   }
   agregar(): void {
@@ -66,8 +75,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
       }
     }
   }
-  llamarPopup(accionEnviar: string, data?: {}): void {
-    this.dialogRef = this.dialog.open(AddProductComponent, {
+  async llamarPopup(accionEnviar: string, data?: {}): Promise<any> {
+    this.dialogRef = await this.dialog.open(AddProductComponent, {
       panelClass: 'custom-dialog-container',
       height: 'auto',
       width: 'auto',
@@ -78,11 +87,43 @@ export class ProductComponent implements OnInit, AfterViewInit {
         }
       }
     });
-    if (this.dialogRef) {
-      this.obtenerProductos();
-    }
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result.respuesta === true){
+        this.actualizar();
+        this.habilitaBtnModificar = true;
+        this.dataEnviar = [];
+      }
+    });
+  }
+  async eliminar(): Promise<any> {
+    await this.productService.deleteProduct(this.dataEnviar[0].id).then(res => {
+      if (res.message !== undefined) {
+        this.alertExito(res.message);
+        this.habilitaBtnModificar = true;
+        this.dataEnviar = [];
+        this.actualizar();
+      } else {
+        this.alertError('No se ha podido eliminar el registro');
+      }
+    }).catch(err => {
+      this.alertError(`No se ha podido eliminar el registro`);
+    });
+
+  }
+  alertExito(message: string): void {
+    Swal.fire({
+      title: 'Exitoso!',
+      text: message,
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    });
+  }
+  alertError(message: string): void {
+    Swal.fire({
+      title: 'Falló!',
+      text: message,
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
   }
 }
-
-
-
