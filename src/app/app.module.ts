@@ -7,12 +7,14 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginationPipe } from './components/pipes/pagination.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotfoundComponent,
-    NavbarComponent
+    NavbarComponent,
+    PaginationPipe
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angu
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
@@ -15,11 +16,14 @@ import { ProductInterface } from './product-interface';
 export class ProductComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'description', 'reference', 'cant', 'fech_update', 'select'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   dataSource: any;
   form: any = FormGroup;
   dataEnviar: any = [];
   dialogRef: any;
   habilitaBtnModificar = true;
+  numeroResgistros = 5;
+  dataProduct: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,11 +31,13 @@ export class ProductComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog) {
     this.obtenerProductos();
   }
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
-
-
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   async actualizar(): Promise<any> {
     try {
@@ -45,6 +51,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
   async obtenerProductos(): Promise<any> {
     try {
       const res = await this.productService.listAllProducts();
+      this.dataProduct = res;
+      // this.pagination(0);
       this.dataSource = new MatTableDataSource<ProductInterface>(res);
     } catch (error) {
       this.alertError('Ha ocurrido un error a la hora de obtener los productos');
@@ -88,7 +96,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
       }
     });
     this.dialogRef.afterClosed().subscribe(result => {
-      if (result.respuesta === true){
+      if (result.respuesta === true) {
         this.actualizar();
         this.habilitaBtnModificar = true;
         this.dataEnviar = [];
@@ -125,5 +133,12 @@ export class ProductComponent implements OnInit, AfterViewInit {
       icon: 'error',
       confirmButtonText: 'Aceptar'
     });
+  }
+  pagination(inicio): void {
+    const registrosPag = [];
+    for (let elem = inicio; elem < this.numeroResgistros; elem++) {
+      registrosPag.push(this.dataProduct[elem]);
+    }
+    this.dataSource = new MatTableDataSource<ProductInterface>(registrosPag);
   }
 }
